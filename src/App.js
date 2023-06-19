@@ -1,11 +1,16 @@
 import React, { Suspense, lazy } from "react";
 import "./App.css";
-import Main from "./ts/main.tsx";
+// import StaticData from "./dynamicModule";
+const LazyLoadedComponent = lazy(() => import("./LazyLoadedComponent"));
+
 function App() {
   return (
-    <div>
-      from App
-      <Main />
+    <div className="App">
+      <header className="App-header">Vanity Numbers1</header>
+
+      <Suspense fallback={<div>loading</div>}>
+        <LazyLoadedComponent />
+      </Suspense>
     </div>
   );
 }
